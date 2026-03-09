@@ -187,4 +187,3 @@ This repository serves as:
 - A **technical documentation portfolio**
 - A demonstration of **real-world Windows and Azure administration practices**
 - A structured learning progression toward **professional infrastructure roles**
-```
