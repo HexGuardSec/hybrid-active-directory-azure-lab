@@ -81,10 +81,10 @@ The resulting network architecture is structured as follows:
 Microsoft Azure
 │
 └── AZ-DC01-vnet
-│
-├── default subnet
-│
-└── Subnet-Servers
+    │
+    ├── default subnet
+    │
+    └── Subnet-Servers
 
 
 This structure allows separation of infrastructure components and prepares the environment for more advanced networking configurations.
