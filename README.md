@@ -23,17 +23,17 @@ This lab focuses on **identity management, infrastructure deployment, cloud inte
 
 - Extend an existing **Active Directory enterprise lab** into the cloud
 - Deploy and manage **Azure Virtual Machines**
-- Understand **Azure infrastructure fundamentals**
-- Implement **secure identity management**
+- Build a secure **Azure network architecture**
+- Implement centralized storage using **Windows File Server**
 - Prepare the environment for **Hybrid Identity integration**
 - Automate administrative tasks using **PowerShell**
 - Document real-world troubleshooting scenarios
 
 ---
 
-## 🏗️ Lab Environment
+# 🏗️ Lab Environment
 
-### On-Premise Infrastructure
+## On-Premise Infrastructure
 
 - Hypervisor: VMware Workstation
 - Server OS: Windows Server 2022 (Domain Controller)
@@ -41,39 +41,53 @@ This lab focuses on **identity management, infrastructure deployment, cloud inte
 - Network: Internal LAN
 - Domain: `corp.local`
 
-### Azure Cloud Infrastructure
+---
+
+## ☁️ Azure Cloud Infrastructure
 
 - Platform: Microsoft Azure
 - Resource Group: `RG-AD-LAB`
-- Virtual Machine: `AZ-DC01`
-- Operating System: Windows Server 2022
-- Region: West Europe
-- Remote Management: RDP
+- Virtual Network: `AZ-DC01-vnet`
+- Subnet: `Subnet-Servers`
+- Network Security Group: `NSG-Servers`
+
+### Azure Virtual Machines
+
+| Server | Role             |
+|--------|------------------|
+AZ-DC01  | Domain Controller
+AZ-FILE01| File Server
+
+Region: **West Europe**
 
 ---
 
-## ☁️ Azure Infrastructure Architecture
+# ☁️ Azure Infrastructure Architecture
 
 ```
 
 Microsoft Azure
 │
 └── Resource Group (RG-AD-LAB)
-│
-└── Virtual Machine (AZ-DC01)
-│
-├── Virtual Network
-├── Subnet
-├── Public IP
-└── Network Security Group
+    │
+    └── AZ-DC01-vnet
+        │
+        └── Subnet-Servers
+        │
+        ├── AZ-DC01
+        │      
+        └── Domain Controller
+            │
+            └── AZ-FILE01
+                └── File Server
 
 ```
 
-This infrastructure provides a basic cloud compute environment used to simulate enterprise workloads.
+This infrastructure simulates a **basic enterprise cloud environment with centralized identity and storage services**.
 
 ---
 
-## 🧩 Hybrid Infrastructure Vision
+# 🧩 Hybrid Infrastructure Vision
 
 Modern enterprise environments rarely rely only on on-premise infrastructure.
 
@@ -96,70 +110,70 @@ This architecture reflects how most companies manage identity across on-premise 
 
 ---
 
-## 🗂️ Repository Structure
+# 🗂️ Repository Structure
 
 ```
 
 hybrid-active-directory-azure-lab
 │
-├── windows-server-setup/
-├── active-directory-setup/
-├── group-policy-setup/
-├── azure-fundamentals/
-├── scripts/
-├── troubleshooting/
-└── notes/
+├── azure-fundamentals
+│     ├── deploy-first-vm.md
+│     ├── create-virtual-network.md
+│     ├── network-security-group.md
+│     ├── deploy-file-server-vm.md
+│     └── file-server-setup.md
+│
+└── screenshots
 
 ```
 
-Each section documents a different part of the infrastructure configuration.
+Each section documents a different part of the Azure infrastructure deployment.
 
 ---
 
-## ⚙️ Automation
+# ⚙️ Automation
 
-PowerShell scripts are used to automate several administrative tasks:
+PowerShell scripts will be used to automate several administrative tasks including:
 
 - User creation
-- Bulk account import
-- Account management
+- Bulk account provisioning
+- Infrastructure management
 - Administrative automation
 
-Scripts are located in the `/scripts` directory.
+Scripts will be organized in the `/scripts` directory.
 
 ---
 
-## 🧪 Troubleshooting Scenarios
+# 🧪 Troubleshooting Scenarios
 
 This repository documents real-world issues encountered during the lab such as:
 
-- DNS resolution problems
-- Group Policy deployment failures
 - Azure VM connectivity issues
-- Active Directory configuration errors
+- DNS resolution problems
+- Network security misconfigurations
+- File share access issues
 - Authentication troubleshooting
 
 Each scenario includes diagnostic steps and solutions.
 
 ---
 
-## 🧠 Skills Demonstrated
+# 🧠 Skills Demonstrated
 
-- Windows Server installation & configuration
-- Active Directory architecture design
-- Organizational Unit structuring
-- AGDLP permission model
-- NTFS permission management
-- Group Policy configuration
-- PowerShell automation
-- Microsoft Azure infrastructure deployment
-- Cloud resource management
+- Windows Server administration
+- Active Directory infrastructure
+- Azure Virtual Machine deployment
+- Azure Virtual Network configuration
+- Network Security Groups (NSG)
+- File Server configuration
+- SMB share management
+- Infrastructure documentation
+- Cloud infrastructure basics
 - Hybrid identity concepts
-- Infrastructure troubleshooting
 
 ---
 
-## 🎯 Target Role
+# 🎯 Target Role
 
 This project demonstrates practical skills aligned with roles such as:
 
@@ -173,13 +187,13 @@ The focus is on **enterprise-style infrastructure implementation and documentati
 
 ---
 
-## 📌 Project Status
+# 📌 Project Status
 
-🔧 In Progress – The lab will continue evolving with additional Azure services, hybrid identity configuration, and automation improvements.
+🔧 In Progress – The lab continues evolving with additional Azure services, hybrid identity configuration, and automation improvements.
 
 ---
 
-## 📘 Purpose of This Repository
+# 📘 Purpose of This Repository
 
 This repository serves as:
 
